@@ -1,0 +1,104 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 29, 2014, 9:44:09 AM
+    Author     : vansonict
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: url("../images/cubes.png") repeat scroll 0 0 #FFFFFF;
+        font-family: 'CartoGothicStdBook', Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #474747;
+	line-height: 1.6em;
+        overflow-y: scroll;
+}
+
+.container {
+    background: #eee;
+    background: -moz-linear-gradient(top, #fff 0%, #ddd 84%, #aaa 100%);
+    background: linear-gradient(top, #fff 0%, #ddd 84%, #aaa 100%);
+    -pie-background: linear-gradient(top, #fff 0%, #ddd 84%, #aaa 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(84%,#ddd), color-stop(100%,#aaa));
+    -moz-box-shadow: 0 0 12px 1px #999 inset;
+    -webkit-box-shadow: 0 0 12px 1px #999 inset;
+    box-shadow: 0 0 12px 5px #999 ;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}   
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+.container_16:after {
+	content: ".";
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+}
+
+.clearfix:before, .clearfix:after, .container_12:before, .container_12:after, .container_16:before, .container_16:after {
+	content: ".";
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+}
+
+.clearfix, .container_16 {
+}
+
+.map {
+	height: 600px;
+	width: 100%;
+}
+
+.container_16 {
+	margin-left: auto;
+	margin-right: auto;
+	//width: 1200px;
+}
+.clearfix, .container_12, .container_16 {
+}
+
+.item {
+	margin: 0 0 2em;
+	padding: 1em;
+}
+
+.rounded {
+	border-radius: 8px 8px 8px 8px;
+}
+
+.dark {
+	background: none repeat scroll 0 0 #2A3333;
+}
+
+#p-open {
+    display: inline-block;
+    padding-left: 5px;
+}
+#p-welcome {
+    display: inline-block;
+}
+
+.welcome-hidden {
+    display: none !important;
+}

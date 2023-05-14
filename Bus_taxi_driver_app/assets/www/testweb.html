@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>ping taxi client</title>
+	
+	<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/map.css" type="text/css">
+	<script type="text/javascript" src ="js/testweb.js"></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/markerwithlabel.v1.1.5.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/webintent.js"></script>
+    
+</head>
+<body>
+	<div id="page-home" data-role="page" style="background-color: yellow;">
+		<div id="page-content" data-role="content">
+			<div align="center" >
+				<h2 style="color: red">Đăng Nhập</h2>
+				<img src="images/icon.png">
+			</div> 
+			<div id="content" >
+				<label style="color: green;font-weight: bold;" for="BKS"> Biển số xe: </label> 
+				<input type="text" name="BKS" 
+					id="BKS" placeholder="Nhập biển số xe!"
+					style="	background-color: white; 
+							color : black;
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;" /> <br> 
+				<label	style="color: green;font-weight: bold;" for="pass"> Mật Khẩu: </label> <br>
+				<input  type="password" name="password" id="password"
+					placeholder="Nhập mật Khẩu"
+					style="	background-color: white; 
+							color : black;
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;"/> <br> 
+				<!-- <div>
+					<a id="loginbtn" href="#page-map" data-role="button" data-theme="a">Đăng nhập</a>
+				</div> -->
+				<div align = "center" id ="btnlogin" onmousedown="changebutton('test','images/buttons/green_tat.png')"
+													onmouseup="changebutton('test','images/buttons/green_Bat.png')"
+													onmouseover="changebutton('test','images/buttons/green_dangbat.png')">
+					<a class="button"></a>
+                            <img  id ="test"	alt ="" style="width:98%;height:45px;margin-left:5px;align:center" 
+                                    src="images/buttons/green_dangnhap.png"></a>
+					<br/><br/>
+				</div>
+				<div align="center"><br/><br/><a href="register.html" rel="external">ĐĂNG KÍ MỚI</a> <br></div>
+
+			</div><!-- end content -->
+		</div><!-- end page content -->		
+	</div>
+	
+
+</body>
+</html>
+

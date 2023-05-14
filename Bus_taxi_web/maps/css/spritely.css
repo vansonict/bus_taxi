@@ -1,0 +1,208 @@
+#sp-container {
+	//width: 900px;
+	//min-width: 900px;
+	padding-top: 359px;
+	position: relative;
+	margin: auto;
+	//border-right-width: 2px;
+	//border-left-width: 2px;
+	//border-right-style: solid;
+	//border-left-style: solid;
+	//border-right-color: #666;
+	//border-left-color: #666;
+	background-color: #FFF;
+}
+#logo {
+	width: 245px;
+	height: 113px;
+	position: absolute;
+	top: 5px;
+	left: 20px;
+	z-index: 1900;
+	text-indent: -9999px;
+	//background-image: url(../images/LogoBaumann.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+a, a:visited {
+	color: #3a9bc7;
+	text-decoration: underline;
+	outline: none;
+	font-weight: bold;
+}
+a:hover {
+	text-decoration: underline;
+	color: #f60;
+}
+#slider.ui-corner-all,
+#slider .ui-corner-all {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+#slider {
+	display: none;/* show dynamically for non smart-phones or ipad */
+	position: relative;
+	z-index: 200;
+	height: 14px;
+	width: 100%;
+	background: url(../images/slider_bg.png) 0 0;
+}
+#slider.ui-slider-horizontal .ui-slider-handle  {
+	position: absolute;
+	top: -9px;
+	cursor: pointer;
+	outline: none;
+	height: 40px;
+	background-image: url(../images/Lenkrad40.png);
+	width: 40px; 
+	background-color: transparent;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+#dragMe {
+	position: absolute;
+	top: 290px;
+	left: 57%;
+	z-index: 1000;
+	background: url(../images/dragme_text.png) 0 0 no-repeat;
+	margin-left: -50px;
+	width: 100px;
+	height: 65px;
+}
+.buehne {
+	position: absolute;
+	top: 0;
+	left: 0;
+	//width: 100%;
+	min-width: 900px;
+	height: 359px;
+	overflow: hidden;
+}
+#buehne {
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+}
+#hg {
+	background: #aedfe5 url(../images/Himmel.png) 0 0 repeat-x;
+	z-index: -1;
+}
+#hg1 {
+	z-index: 0;
+	background-image: url(../images/HimmelNacht1.png);
+	background-repeat: repeat-x;
+	background-position: 0 0;
+}
+#wolken {
+	background-color: transparent;
+	background-image: url(../images/cloud.png);
+	background-repeat: repeat-x;
+	background-position: 305px 20px;
+	z-index: -1;
+}
+#mond {
+	background-color: transparent;
+	background-image: url(../images/Mondhimmel1.png);
+	background-repeat: repeat-x;
+	background-position: 305px 20px;
+	z-index: -1;
+}
+#hill2 {
+	background-color: transparent;
+	background-image: url(../images/hill2.png);
+	background-repeat: repeat-x;
+	background-position: 0px 210px;
+}
+#berge {
+	background-color: transparent;
+	background-image: url(../images/hill-with-windmill.png);
+	background-repeat: repeat-x;
+	background-position: 0 43px;
+}
+#strasse {
+	background-color: transparent;
+	background-image: url(../images/Road1000.png);
+	background-repeat: repeat-x;
+	background-position: 0 228px;
+}
+
+#car {
+	position: absolute;
+	top: 250px;
+	left: 65px;
+	width: 180px;
+	height: 64px;
+	z-index: 1000;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: url(../images/BaumannCar.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+#car1 {
+	position: absolute;
+	top: 270px;
+	left: 20px;
+	width: 180px;
+	height: 64px;
+	z-index: 1000;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: url(../images/BaumannCar.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+#car1 p,
+#car p{
+    padding: 3px 5px;
+    font-size: 16px;
+    border-radius: 3px;
+    background: #fff;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+#car1:hover p,
+#car:hover p{
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+#balloons {
+	position: relative;
+	left: 720px;
+	background: transparent url(../images/balloon2.png) 0 0 repeat-y;
+	z-index: 5000;
+}
+
+#balloons2 {
+	position: absolute;
+	left: 180px;
+	background: transparent url(../images/balloon1.png) 0 0 repeat-y;
+	z-index: 5000;
+}
+
+@media (max-width: 880px){
+    #sp-container {
+        display: none;
+    }
+}
+
+#car > p,
+#car1 > p {
+    background: #fff;
+    margin-top: -28px; 
+}

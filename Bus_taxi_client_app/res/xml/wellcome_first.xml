@@ -1,0 +1,50 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<linearlayout android:id="@+id/LinearLayoutWellcomeFirst" 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width = "fill_parent"
+        android:layout_height = "fill_parent"
+        android:text = "Số điện thoại"
+        />
+     <EditText
+        android:id="@+id/editTextPhoneNo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:phoneNumber="true" >
+    </EditText>
+    <TextView
+        android:layout_width = "fill_parent"
+        android:layout_height = "fill_parent"
+        android:text = "Mã đại lý"
+        />
+     <EditText
+        android:id="@+id/editTextDailyId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:phoneNumber="true" >
+    </EditText>
+    <TextView
+        android:layout_width = "fill_parent"
+        android:layout_height = "fill_parent"
+        android:text = "Hãng mặc định"
+        />
+     <EditText
+        android:id="@+id/editTextHangxe"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </EditText>
+        
+	<Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu lại" />
+	<Button
+	    android:id="@+id/rejectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bỏ qua" />
+</linearlayout>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport"
+		content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>ptit taxi client</title>
+	
+	<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/map.css" type="text/css">
+	
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$('#page-map').live('pageinit', function() {
+			document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady() {
+				$('#write').live('click', function() {
+					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);	
+				});
+		    }
+
+		    function gotFS(fileSystem) {
+		    	fileSystem.root.getDirectory("ptittaxi", {create: true, exclusive: false}, gotDirectoryEntry, fail);
+		    }
+		    
+		    function gotDirectoryEntry(directoryEntry) {
+		    	directoryEntry.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);	
+		    }
+
+		    function gotFileEntry(fileEntry) {
+		        fileEntry.createWriter(gotFileWriter, fail);
+		    }
+
+		    function gotFileWriter(writer) {
+		        writer.onwriteend = function(evt) {
+		            console.log('write end');
+		        };
+		        writer.write($('#test').val());
+		    }
+
+		    function fail(error) {
+		        console.log(error.code);
+		        var msg = '';
+		        switch (error.code) {
+			        case FileError.NOT_FOUND_ERR:
+			        	msg = 'not found';
+				        break;
+			        
+			        case FileError.SECURITY_ERR:
+				        msg = 'security';
+				        break;
+			        
+			        case FileError.ABORT_ERR:
+				        msg = 'abort';
+				        break;
+			        
+			        case FileError.NOT_READABLE_ERR:
+				        msg = 'not readable';
+				        break;
+				        
+			        case FileError.ENCODING_ERR:
+			        	msg = 'encoding';
+			        	break;
+			        	
+			        case FileError.NO_MODIFICATION_ALLOWED_ERR:
+			        	msg = 'no midification allowed';
+			        	break;
+			        	
+			        case FileError.INVALID_STATE_ERR:
+			        	msg = 'invalid state';
+			        	break;
+			        	
+			        case FileError.SYNTAX_ERR:
+			        	msg = 'syntax';
+			        	break;
+			        	
+			        case FileError.INVALID_MODIFICATION_ERR:
+			        	msg = 'invalid modification';
+			        	break;
+			        	
+			        case FileError.QUOTA_EXCEEDED_ERR:
+			        	msg = 'quota exceeded';
+			        	break;
+			        	
+			        case FileError.TYPE_MISMATCH_ERR:
+			        	msg = 'type mismatch';
+			        	break;
+			        	
+			        case FileError.PATH_EXISTS_ERR:
+			        	msg = 'path exists';
+			        	break;
+		        }
+		        console.log(msg);
+		    }
+		});	
+	</script>
+</head>
+<body>
+	<!-- map page -->
+	<div data-role="page" data-theme="c" id="page-map" data-fullscreen="true">
+		<div data-role="content" id="map-content">
+			<input type="text" id="test" />
+			<button id="write">Write to file</button>
+		</div> <!-- /content -->
+	</div> <!-- /page-map -->
+</body>
+</html>

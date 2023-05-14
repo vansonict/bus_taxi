@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>PTIT client</title>
+	
+	<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/map.css" type="text/css">
+	<!-- <script type="text/javascript" src ="js/testweb.js"></script> -->
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+<!-- 	<script type="text/javascript" charset="utf-8" src="js/markerwithlabel.v1.1.5.min.js"></script> -->
+	<script type="text/javascript" charset="utf-8" src="js/tracuu.js"></script>
+    
+    <!-- <link rel="stylesheet" href="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
+    <script type="text/javascript" src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script> -->
+</head>
+<body>
+	<div id="page-home" data-role="page" data-theme="e">
+			<div data-role="header" data-theme="e">
+				<h2 style="color: red">Tìm kiếm xe khách</h2>
+			</div> 
+			<!-- <div align ="left">
+				<h4 Style ="color: blue"> Để tra cứu thông tin về hãng xe quý khách vui lòng nhập thông tin về hãng xe vào ô hãng xe!</h4>
+				<h4 style="color: blue"> Để tra cứu thông tin về xe quý khách nhập biển số xe vào ô Xe khách!</h4>
+			</div> -->
+			
+			<div data-role="content" id="content">
+				<!-- <form action="#page-info" method="get"> -->
+					<label for="hangxe"> Nhà xe: </label> 
+					<select id="hangxe">
+						<option value="">Tất cả</option>
+					</select>
+					
+					<!-- Loại xe -->
+					<label for=""loaixe"">Loại xe: </label>
+					<select name ="loaixe" id="loaixe">
+						<option value="">Tất cả</option>
+					</select>
+					
+					<!-- Theo biển số xe -->
+					<!-- <label for="BKS"> Tra cứu xe khách: </label>
+					<input  type="text" name="BienSoXe" id="BKS"
+						placeholder="Nhập biển số xe vào đây"/> -->
+					
+					<!-- trạng thái xe -->
+					<!-- <label for="stateCar">Trạng thái xe: </label>
+					<select name="stateCar" id="stateCar" data-role="slider">
+						<option value="1">On</option>
+						<option value="2">Off</option>
+					</select> -->
+					
+					<!-- Lộ trình -->
+					<label for="end_location">Đích đến: </label>
+					<input type="text" name="end_location" id="end_location" placeholder="Nhập điểm bạn cần tới ở đây..."/>
+					
+					<!-- Button -->
+					<a href="#page-info" id="button" data-role="button" data-icon="star" data-theme="b" data-transition="pop">Tra cứu thông tin</a>
+					<!-- <input type="submit" id="button" data-icon="star" data-theme="b" data-transition="pop" value="Tra cứu thông tin"> -->
+				<!-- </form> -->
+					<!-- 
+					<label id = "ketquahangxe"></label>
+					<label id = "ketquaxetaxi"></label> -->
+			</div><!-- end content -->	
+			
+			<!-- footer -->
+			<!-- <div data-role="footer" data-theme="e">
+				<h1>dadadsad</h1>
+			</div> -->
+	</div>
+	
+	<div data-role="page" id="page-info" data-theme="e">
+		<div data-role="content">
+			<div class="wrap">
+				<div class="wrap-content">
+					<span class="station"></span>
+					<h2>36K3-02668</h2>
+					<span class="img-car"></span>
+					<p>Thanh Hóa - Hà Nội</p>
+					<span class="info-price-time">5000 đ/lượt|30phút/chuyến</span>
+					<div data-role="collapsible" class="info_ct" data-theme="e" data-mini="true" data-content-theme="e">
+						<h4>Thông tin chi tiết</h4>
+						<p>Thanh Hóa - Ninh Bình - Hà Nội</p>
+						
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><a href="index.html" data-role="button" data-mini="true" data-transition="flip" data-theme="d">Xem trên bản đồ</a></div>
+							<div class="ui-block-b"><a href="index.html" data-role="button" data-mini="true" data-transition="flip" data-theme="d">Trạm xe gần nhất</a></div>
+						</div>
+						
+					</div>
+					<hr></hr>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

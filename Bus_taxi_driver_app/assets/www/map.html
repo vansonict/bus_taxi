@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>ping taxi client</title>
+	
+	<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/map.css" type="text/css">
+	
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	
+	<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.services.js"></script>
+	
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/markerwithlabel.v1.1.5.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/webintent.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/md5.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/testweb.js"></script>
+</head>
+<body>
+	<!-- map page -->
+	<div data-role="page" data-theme="c" id="page-map" data-fullscreen="true">
+		<div data-role="header" data-theme="d" data-position="fixed" data-fullscreen="true">
+			<div data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a data-theme="d" href="#page-map" id="waitOn">
+						<img id="OnState"	alt ="" style="width:100%;height:10%;align:center" 
+								src="images/buttons/dangbatbtn.png"></a></a></li>
+					<li><a href="#page-map" id="waitOff"  data-theme ="d">
+						<img id="OffState"	alt ="" style="width:100%;height:10%;align:center" 
+								src="images/buttons/tatbtn.png">
+					</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+		
+		<div data-role="content" id="map-content">
+			<div id="map_canvas"></div>
+		</div> <!-- /content -->
+		
+		<div data-role="footer" id="map-footer" data-theme="a" data-fullscreen="true" 
+			data-position="fixed">
+			<div id="footer-notification" style="display: none;">
+				<h4>Có yêu cầu mới từ khách hàng, gọi tới khách hàng này ?</h4>
+				<div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a data-icon='forward' href='#page-map' data-role='button' class='call-button' 
+							data-theme='b' data-rel='external'>Gọi</a></li>
+						<li><a data-icon='delete' href='#page-map' data-role='button' class='reject-button' 
+							data-theme='b' data-iconpos='right'>Hủy</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div>
+			
+			<div data-role="navbar" data-iconpos="left" data-icon="exit">
+				<ul>
+					<li><a href="logout.html" data-theme='b' data-rel="dialog">Đăng xuất</a></li>
+				</ul>
+			</div>
+		</div><!-- /footer -->
+	</div><!-- /page-map -->
+</body>
+</html>

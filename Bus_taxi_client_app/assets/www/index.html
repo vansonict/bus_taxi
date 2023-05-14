@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+	<meta name="viewport"
+			content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>ptit taxi client</title>
+
+	<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/map.css" type="text/css">
+	<link rel="stylesheet" href="css/index.css" type="text/css" media="screen" title="no title">
+	
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	
+	<script src="http://maps.google.com/maps/api/js?v=3&sensor=true&language=vi" type="text/javascript"></script>
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script> 	
+	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.js"></script>
+ 	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.services.js"></script>
+ 	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.extensions.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script> 	
+	
+	<script type="text/javascript" charset="utf-8"> var url= 'http://192.168.1.5:8080/Ptit-taxi/ptittaxi_api/'; </script>
+ 	<script type="text/javascript" charset="utf-8" src="js/map.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/tracuu.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/startup.js"></script>
+ 	<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/screenSize.js"></script>
+	
+</head>
+<body >
+	
+	<div id="page-search" data-role="page" data-theme="e">
+		<div data-role="header" data-theme="e">
+			<h2 style="color: red">Tìm kiếm xe khách</h2>
+		</div> 
+		
+		<div data-role="content">
+			<label for="hangxe"> Nhà xe: </label> 
+			<select id="hangxe">
+				<option value="">Tất cả</option>
+			</select>
+			
+			<!-- Loại xe -->
+			<label for=""loaixe"">Loại xe: </label>
+			<select name ="loaixe" id="loaixe">
+				<option value="">Tất cả</option>
+			</select>
+			
+			<!-- Theo biển số xe -->
+			<!-- <label for="BKS"> Tra cứu xe khách: </label>
+			<input  type="text" name="BienSoXe" id="BKS"
+				placeholder="Nhập biển số xe vào đây"/> -->
+			
+			<!-- trạng thái xe -->
+			<label for="stateCar">Trạng thái xe: </label>
+			<select name="stateCar" id="stateCar" data-role="slider" disabled="disabled">
+				<option value="1">On</option>
+				<option value="2">Off</option>
+			</select>
+			
+			<!-- Lộ trình -->
+			<label for="end_location">Đích đến: </label>
+			<input type="text" name="end_location" id="end_location" placeholder="Nhập điểm bạn cần tới ở đây..."/>
+			
+			<!-- Button -->
+			<a href="#page-info" id="button" data-role="button" data-icon="star" data-theme="b" data-transition="pop">Tra cứu thông tin</a>
+				
+		</div><!-- end content -->	
+	</div>
+	
+	<!-- KQ tìm kiếm -->
+	<div data-role="page" id="page-info" data-theme="e">
+		<div data-role="content">
+		</div>
+	</div> 
+	<div data-role="page" id="page-info2" data-theme="e">
+		<div data-role="content">
+			<div class="wrap">
+				<div class="wrap-content">
+					<span class="station"></span>
+					<h2>36K3-02668</h2>
+					<span class="img-car"></span>
+					<p>Thanh Hóa - Hà Nội</p>
+					<span class="info-price-time">5000 đ/lượt|30phút/chuyến</span>
+					<div data-role="collapsible" class="info_ct" data-theme="e" data-mini="true" data-content-theme="e">
+						<h4>Thông tin chi tiết</h4>
+						<p>Thanh Hóa - Ninh Bình - Hà Nội</p>
+						
+						<div class="ui-grid-a">
+							<div class="ui-block-a"><a href="#page-map" data-role="button" data-mini="true" data-transition="flip" data-theme="d">Xem trên bản đồ</a></div>
+							<div class="ui-block-b"><a href="#page-map" data-role="button" data-mini="true" data-transition="flip" data-theme="d">Trạm xe gần nhất</a></div>
+						</div>
+						
+					</div>
+					<hr></hr>
+				</div>
+			</div>
+			<div class="wrap-content">
+				<a href="#page-search" data-role="button" data-mini="true" data-transition="flip" data-theme="b">Trở lại trang tìm kiếm</a>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Map lộ trình xe chạy -->
+	<div data-role="page" id="info-map" data-theme="c" data-fullscreen="true">
+		<!-- header -->
+		<div data-role="header" data-theme="d" data-position="fixed" data-fullscreen="true" ></div>
+		
+		<!-- content -->
+		<div data-role="content" id="infoMap-content">
+			<div id="map_Icanvas"></div>
+		</div>
+		
+		<!-- footer -->
+		<div data-role="footer" data-position="fixed" data-fullscreen="true" >
+			<div data-role="navbar">
+				<ul>
+					<li><a id="exitBtn" data-theme="e" data-icon="delete" >Thoát</a></li>
+					<li><a id="refreshBtn" data-theme="e" data-icon="refresh" href="#page-map" >Làm Mới</a></li>
+					<li><a id="nextBtn" data-theme="e" data-icon="grid" href="#page-home" data-transition="none">Gọi</a></li>
+					<li><a id="tracuuBtn" data-theme ="e" data-icon = "search" href = "#page-search">Tra cứu</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div>
+	</div>
+	
+	<!-- Vị trí hiện tại của khách hàng -->
+	<div id="page-map" data-role="page" data-theme="c"  data-fullscreen="true">
+		<div data-role="header" data-theme="d" data-position="fixed" data-fullscreen="true" >
+			
+		</div> <!-- /head -->
+		<div data-role="content" id="map-content">
+			<div id="map_canvas"></div>
+			<input type="hidden" id="lat-hidden" />
+			<input type="hidden" id="lng-hidden" />
+			<input type="hidden" id="location-service-status" value="0" />
+		</div> <!-- /content -->
+		<div data-role="footer" data-position="fixed" data-fullscreen="true" >
+			<div data-role="navbar">
+				<ul>
+					<li><a id="exitBtn" data-theme="e" data-icon="delete" >Thoát</a></li>
+					<li><a id="refreshBtn" data-theme="e" data-icon="refresh" href="#page-map" >Làm Mới</a></li>
+					<li><a id="nextBtn" data-theme="e" data-icon="grid" href="#page-home" data-transition="none">Gọi</a></li>
+					<li><a id="tracuuBtn" data-theme ="e" data-icon = "search" href="#page-search">Tra cứu</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div>
+	</div> <!-- /page-map -->
+	
+	<!-- start page-home giao dien chon xe -->
+	<div id="page-home" data-role="page" style="background-image:url('images/bg.png');width:100%;height:100% ">
+		<div data-role="header" data-theme="f" align = "center" >
+			<br>
+			<img src="images/buttons/calltaxi.png" width="145" height="150" >
+		</div>
+		<div id="content" data-role="content" align ="center" >
+			<a class="choosetaxi" value ="1" href="" data-rel="dialog">
+				<img width="110" height="110" src="images/buttons/45cho.png" />
+       	 	</a>
+       	 	
+        	<a class="choosetaxi" value ="2" href="" data-rel="dialog">
+                <img width="110" height="110" src="images/buttons/gnam.png" />
+            </a>
+            
+            <a class="choosetaxi" value ="6" href="" data-rel="dialog">
+                <img width="110" height="110" src="images/buttons/29cho.png" />
+             </a>
+             
+             <a class="choosetaxi" value ="7" href="" data-rel="dialog">
+                <img width="110" height="110" src="images/buttons/16cho.png" />
+             </a>
+		</div> <!-- end page content -->
+		<div id="footer"  data-theme="f" align="center">
+			<div data-role="navbar">
+				<ul>
+					<li><a id="exitBtn" data-theme="e" data-icon="cus" >Thoát</a></li>
+					<li><a id="Setting" data-theme="e" data-icon="gear" >Cài đặt</a></li>
+					<li><a id="mapBtn" data-theme="e" data-icon="grid" >Bản đồ</a></li>
+					</ul>
+			</div><!-- /navbar -->
+		</div>
+	</div> <!-- end page home -->
+
+	
+	<div data-role="page" id="dialog">
+		<div data-role="header" data-theme="d">
+			<h1>Ptit taxi</h1>
+		</div>
+		<div data-role="content" data-theme="c">
+            <div id="taxi"></div>
+			<a href="#page-home" data-role="button" value="0" data-theme="e"data-icon="delete">Cancel</a>
+		</div>
+	</div> <!-- end page popup -->
+	
+	<div data-role="page" id="loader"style="background-image:url('images/bg.png');width:100%;height:100% ">
+		<div align="center" >
+			<a>loading...</a>
+		</div>
+	</div> <!-- end page popup -->
+	
+	<div data-role="page" id="inputPhoneNumber">
+		<div data-role = "header" data-theme="a">
+			<h1> PhoneNumber </h1>
+		</div><!--end header  -->
+		
+		<div data-role="content" data-theme="b">
+			<h2>Nhập vào số điện thoại:</h2>
+			<div id="sdt">
+				<input id="phoneNumber" type="number" placeholder="Số điện thoại" value=""/>
+				<br><br>
+				<a id="sdtClick" href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="a">OK</a>
+			</div>
+		</div><!--end content  -->
+	</div><!-- end page input phone number  -->
+	
+	<div data-role="page" id="Setting">
+		<div data-role = "header" data-theme="a">
+			<h1> Setting </h1>
+		</div><!--end header  -->
+		
+		<div data-role="content" data-theme="b">
+			<div id="sdtSetting">
+				<h3>Số điện thoại:</h3>
+				<input id="sdtInput" type="number" placeholder="Số điện thoại" value=""/>
+				<h3>Hãng mặc định:</h3>
+				<input id="delHang" type="text" readonly="readonly" value=""/>
+				<br><br>
+				<a id="okSettingClick" href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="a">OK</a>
+				<a id="cancelSettingClick" href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="a">Cancel</a>
+			</div>
+			<div id="oldPn"></div>
+		</div><!--end content  -->
+	</div><!-- end page input phone number  -->
+</body>
+</html>

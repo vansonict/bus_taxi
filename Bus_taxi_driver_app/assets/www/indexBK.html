@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>ptit taxi client</title>
+	
+	<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/map.css" type="text/css">
+	
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	
+	<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.services.js"></script>
+	
+	<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/markerwithlabel.v1.1.5.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/webintent.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/map.js"></script>
+</head>
+<body style="background-color: yellow;">
+	<div id="page-home" data-role="page" style="background-color: yellow;">
+		<div id="page-content" data-role="content" style="background-color: yellow;">
+			<div align="center" >
+				<h2 style="color: red">Đăng Nhập</h2>
+				<img src="images/buttons/icon.png" style ="width: 30%">
+			</div> 
+			<div id="content" >
+				<label style="color: green;font-weight: bold;" for="BKS"> Biển số xe: </label> 
+				<input type="text" name="BKS"  
+					id="BKS" placeholder="Nhập biển số xe!"
+					style="	background-color: white; 
+							color : black;
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;" /> <br> 
+				<label	style="color: green;font-weight: bold;" for="pass"> Mật Khẩu: </label> <br>
+				<input  type="password" name="password" id="password"
+					placeholder="Nhập mật Khẩu"
+					style="	background-color: white; 
+							color : black;
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;"
+				/> <br> 
+				<div align = "center" id ="btnlogin" onmousedown ="clickbutton('test','images/buttons/dangnhap_down.png')" onmouseup="clickbutton('test','images/buttons/dangnhap_up.png')">
+					<a class="buttonlogin">
+						<img id="test"	alt ="" style="width:98%;height:45px;margin-left:5px;align:center" 
+								src="images/buttons/dangnhap_down.png"></a>
+					<br/><br/>
+				</div>
+				<div align="center"><br/><br/><a href="register.html" rel="external">ĐĂNG KÍ MỚI</a> <br></div>
+				<div align="center"><br/><br/><a href="#page-map" rel="external">MAP</a> <br></div>
+
+			</div><!-- end content -->
+		</div><!-- end page content -->		
+	</div>
+	
+	
+	<!-- map page -->
+	<div data-role="page" data-theme="c" id="page-map" data-fullscreen="true">
+		<div data-role="header" data-theme="d" data-position="fixed" data-fullscreen="true">
+			<div data-role="navbar" data-iconpos="left" style="height:11%">
+				<ul>
+					<li><a data-theme="b" href="#page-map" id="waitOn">
+						<img id="OnState"	alt ="" style="width:100%;height:70%;align:center" 
+								src="images/buttons/dangbatbtn.png"></a></a></li>
+					<li><a href="#page-map" id="waitOff"  data-theme ="b">
+						<img id="OffState"	alt ="" style="width:100%;height:70%;align:center" 
+								src="images/buttons/tatbtn.png">
+					</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+		
+		<div data-role="content" id="map-content">
+			<div id="map_canvas"></div>
+		</div> <!-- /content -->
+		
+		<div data-role="footer" id="map-footer" data-theme="a" data-fullscreen="true" 
+			data-position="fixed">
+			<div id="footer-notification" style="display: none;">
+				<h4>Có yêu cầu mới từ khách hàng, gọi tới khách hàng này ?</h4>
+				<div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a data-icon='forward' href='#page-map' data-role='button' class='call-button' 
+							data-theme='b' data-rel='external'>Gọi</a></li>
+						<li><a data-icon='delete' href='#page-map' data-role='button' class='reject-button' 
+							data-theme='b' data-iconpos='right'>Hủy</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div>
+			
+			<!-- <div style="background-color:blue;" id ="dangxuatmap" onmousedown="clickbutton('logoutmap','images/buttons/dangxuatbtn.png')" onmouseup="clickbutton('logoutmap','images/buttons/dangxuatbtn1.png')">
+				<a data-theme='b' data-rel="dialog"  href="logout.html" ><img id = "logoutmap" src="images/buttons/dangxuatbtn.png" style="width:95%;height:8%;align:center; margin-left: 5px" /> </a>
+			</div> -->
+			<div data-role="navbar" data-iconpos="left" data-icon="exit">
+				<ul>
+					<li><a href="#logout-page" data-theme='b' data-rel="dialog">Đăng xuất</a></li>
+				</ul>
+			</div>
+		</div><!-- /footer -->
+	</div><!-- /page-map -->
+	
+	<!-- Logout Page -->
+	<div id="logout-page" data-role="page" style="background-color: yellow">
+		<div id="page-content" data-role="content">
+				<div id="icon" align = "center">
+				</br></br>
+				<image src="images/icon.png" />
+			</div>
+			<div data-role="content" id="content" align="center">
+				<h2> Bạn có chắc chắn muốn thoát khỏi hệ thống?</h2>
+			</div>
+			<!-- end content -->
+			<div id="footer" align="center">
+				<div align = "center" onmousedown="clickbutton('clickdangxuat','images/buttons/dangxuatbtn.png')" onmouseup="clickbutton('clickdangxuat','images/buttons/dangxuatbtn1.png')">
+					<a class="button">
+						<img id="clickdangxuat"	alt ="" style="width:90%;height:60px;margin-left:5px;align:center" 
+					src="images/buttons/dangxuatbtn.png"></a>
+				<br/><br/>
+				</div>
+				<div align = "center" onmousedown="clickbutton('clickquaylai','images/buttons/quaylaibtn.png')" onmouseup="clickbutton('clickquaylai','images/buttons/quaylaibtn1.png')">
+					<a class="button">
+						<img id="clickquaylai" alt ="" style="width:90%;height:60px;margin-left:5px;align:center" 
+					src="images/buttons/quaylaibtn.png"></a>
+				<br/><br/>
+				</div>
+			</div>
+			<!-- <div id = "xacnhan" data-them ='e' data-role = "button"">ĐĂNG XUẤT</div>		Xu ly trong login.js
+			<div id = "cancelogout" data-them='e' data-role ="button" href="map.html">QUAY LẠI</div> -->
+		</div>
+		<!-- end page content -->
+	</div>
+</body>
+</html>
+

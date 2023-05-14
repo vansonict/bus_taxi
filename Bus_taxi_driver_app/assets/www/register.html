@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Register Form</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	
+	<link rel="stylesheet"
+		href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.css" />
+	<script src ="css/index.css" charset="utf-8"></script>
+	<script src="js/jquery-1.7.2.min.js" charset="utf-8"></script>
+	<script src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js"
+		charset="utf-8"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</head>
+ 
+<body>
+	<div id="home-page" data-role="page" style="background: yellow">
+		<div style="color: red" align="center">
+			<h2>Đăng kí</h2>
+				<img src="images/buttons/icon.png" style ="width: 30%">
+		</div>
+		<div data-role="content" id="content-home">
+			<label style="color: green;font-weight: bold;" for="BKS">Biển số xe</label> 
+			<input type="text" id="BKS" data-theme="a" maxlength="8" name="BKS" placeholder="vd:29A1234 hoặc 30A12345" 
+					class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" 
+					style="	background-color: white; 
+							color : black;
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;">
+			<label style="color: green;font-weight: bold;" for="password">Mật Khẩu</label> 
+				<input data-theme="a"type="password"id="password" name="password"placeholder="Yêu cầu từ 6 tới 32 ký tự!" 
+					class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" 
+					style="	background-color: white; 
+							color : black;
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;"/> 
+			<label style="color: green;font-weight: bold;"for="pass_confirm">Nhập lại mật khẩu</label> 
+				<input  data-theme = "a" type="password"id="pass_confirm" name="pass_confirm"	placeholder="Nhập lại mật khẩu" 
+					class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" 
+					style="	background-color: white;
+							color : black; 
+							height: 40px; 
+							background-position: initial initial; 
+							background-repeat: initial initial;"/> 
+			
+			<label style="color: green; font-weight: bold;" for="cartype" id = "loaixe">Loại xe</label> 
+			<select data-theme="d" name="cartype" id="cartype"	class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" >
+					<!-- dynamic list -->
+			</select> 
+			<label style="color: green; font-weight: bold;" for="hangxe" >Hãng xe</label> 
+			<select data-theme="d" id="hangxe" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"	>
+				<!-- dynamic list -->
+			</select>
+		</div> 
+		</br>
+		<div align="center" id="btnregister"
+			onmousedown="clickbutton('clickdangki','images/buttons/guidangki_down.png')"
+			onmouseup="clickbutton('clickdangki','images/buttons/guidangki_up.png')">
+			<a class="button"> <img id="clickdangki" alt=""
+				style="width: 90%; height: 45px; margin-left: 5px; align: center"
+				src="images/buttons/guidangki_down.png"></a> <br />
+			<br />
+		</div>
+		<!--  Phần mở rộng link liên kết với các trang khác -->
+			<div align="center"><a href = "login.html" class = "button" data-theme="a"><b>ĐĂNG NHẬP</b></a></div>
+			<br/><br/>
+			<div align="center"><a href ="help.html" data-rel ="popup"data-theme="a"> HƯỚNG DẪN ĐĂNG KÍ</a></div>
+			<br/><br/>
+	</div>
+	<div data-role = "footer">
+	</div> 
+	<!-- end page content -->
+
+	<!-- start checkinfo page -->
+<!-- Xử lý trong index.js -->
+	<div data-role="popup" id="checkinfo" style="background: yellow" >
+		<div data-role="header" ></div>
+		<div data-role="content">
+			<label style="color: blue;font-weight: bold;">
+			<p id="info"></p>
+			</label>
+		</div>
+		<div data-role="controlgroup" data-type="horizontal" align = "center">
+			<!-- <a id = "xacnhan" href ="#" data-role="button">Xác nhận</a> 
+			<a href="register.html" data-role="button">Đăng kí lại</a> -->
+			<div align = "center" id ="xacnhan" onmousedown="clickbutton('clickxacnhan','images/buttons/xacnhan_down.png')" onmouseup="clickbutton('clickxacnhan','images/buttons/xacnhan_up.png')">
+				<a class="button">
+					<img id="clickxacnhan"	alt ="" style="width:90%;height:45px;margin-left:5px;align:center" 
+					src="images/buttons/xacnhan_down.png"></a>
+				<br/><br/>
+			</div>
+			<div align = "center" id ="quaylai" onmousedown="clickbutton('clickquaylai','images/buttons/quaylai_down.png')" onmouseup="clickbutton('clickquaylai','images/buttons/quaylai_up.png')">
+				<a class="button">
+					<img id="clickquaylai"	alt ="" style="width:90%;height:45px;margin-left:5px;align:center" 
+					src="images/buttons/quaylai_down.png"></a>
+				<br/><br/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

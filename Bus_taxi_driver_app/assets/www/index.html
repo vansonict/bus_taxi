@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+		<title>Ptit taxi driver</title>
+		
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<!-- Jquery Old version -->
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		
+		<!-- google map -->
+		<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+		<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.map/jquery.ui.map.services.js"></script>
+	
+		<!-- cordova -->
+		<script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+		
+		<!-- Custom Js -->
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/md5.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/markerwithlabel.v1.1.5.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/webintent.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/map.js"></script>
+	</head>
+	<body>
+		<!-- Start login -->
+		<div data-role="page" id="login" data-theme="b">
+			<div data-role="header">
+				<h1>PTIT TAXI DRIVER</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#" class="ui-btn-active ui-state-persist" data-icon="user">Đăng nhập</a>
+						</li>
+						<li>
+							<a href="#register" data-icon="lock">Đăng kí</a>
+						</li>
+						<li>
+							<a href="#info" data-icon="info">Giới thiệu</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div data-role="main" class="ui-content">
+				<div class="logo" align="center">
+					<img src="images/buttons/icon.png">
+				</div>
+				<div class="login">
+					<div class="ui-field-contain">
+						<label for="bks">Biển kiểm soát: </label>
+						<input type="text" name="bks" id="bks" placeholder="biển số xe?">
+					</div>
+					<div class="ui-field-contain">
+						<label for="password">Mật khẩu: </label>
+						<input type="password" name="password" id="password" placeholder="*******">
+					</div>
+					<input type="submit" id="submit-login" name="submit" value="Đăng nhập">
+				</div>
+			</div>
+		</div>
+		
+		<!-- start register -->
+		<div data-role="page" id="register" data-theme="b">
+			<div data-role="header">
+				<h1>PTIT TAXI DRIVER</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#login" data-icon="user">Đăng nhập</a>
+						</li>
+						<li>
+							<a href="#" class="ui-btn-active ui-state-persist" data-icon="lock">Đăng kí</a>
+						</li>
+						<li>
+							<a href="#info" data-icon="info">Giới thiệu</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<div class="logo" align="center">
+					<img src="images/buttons/icon.png">
+				</div>
+				<div class="register">
+					<label for="driverName">Họ và tên: </label>
+					<input type="text" name="driverName" id="driverName" placeholder="Lê Văn Sơn">
+					<label for="numPhone">Số điện thoại: </label>
+					<input type="text" name="numPhone" id="numPhone" placeholder="0977012580">
+					<label for="address">Địa chỉ: </label>
+					<textarea name="address" id="address" placeholder="254 Minh Khai, Hai Bà Trưng, Hà Nội"></textarea>
+					<label for="bks">Biển kiểm soát: </label>
+					<input type="text" name="bks" id="bks" placeholder="29A123456">
+					<label for="pass">Password: </label>
+					<input type="password" name="pass" id="pass" placeholder="*******">
+					<label for="carType">Loại xe: </label>
+					<select name="carType" id="carType" data-native-menu="false">
+						<!-- dynamic list -->
+					</select>
+					<label for="carCompany">Nhà xe: </label>
+					<select name="carCompany" id="carCompany" data-native-menu="false">
+						<!-- dynamic list -->
+					</select>
+					<label for="carRoad">Lộ trình: </label>
+					<select name="carRoad" id="carRoad" data-native-menu="false">
+						<!-- dynamic list -->
+					</select>
+				</div>
+				<input type="submit" name="submit-register" id="submit-register" value="Đăng ký">
+			</div>
+		</div>
+		
+		<!-- Start info -->
+		<div data-role="page" id="info" data-theme="b">
+			<div data-role="header">
+				<h1>PTIT TAXI DRIVER INFO</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#login" data-icon="user">Đăng nhập</a>
+						</li>
+						<li>
+							<a href="#register" data-icon="lock">Đăng kí</a>
+						</li>
+						<li>
+							<a href="#info" class="ui-btn-active ui-state-persist" data-icon="info">Giới thiệu</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div data-role="main" class="ui-content">
+				<div class="logo" align="center">
+					<img src="images/buttons/icon.png">
+				</div>
+				<h3>PTIT TAXI DRIVER INFO</h3>
+			</div>
+		</div>
+		<!-- ./Info -->
+		
+		<!-- map page -->
+		<div data-role="page" data-theme="c" id="page-map" data-fullscreen="true">
+			<div data-role="header" data-theme="d" data-position="fixed" data-fullscreen="true">
+				<div data-role="navbar" data-iconpos="left" style="height:11%">
+					<ul>
+						<li><a data-theme="b" href="#page-map" id="waitOn">
+							<img id="OnState"	alt ="" style="width:100%;height:70%;align:center" 
+									src="images/buttons/dangbatbtn.png"></a></a></li>
+						<li><a href="#page-map" id="waitOff"  data-theme ="b">
+							<img id="OffState"	alt ="" style="width:100%;height:70%;align:center" 
+									src="images/buttons/tatbtn.png">
+						</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /header -->
+			
+			<div data-role="content" id="map-content">
+				<div id="map_canvas"></div>
+			</div> <!-- /content -->
+			
+			<div data-role="footer" id="map-footer" data-theme="a" data-fullscreen="true" 
+				data-position="fixed">
+				<div id="footer-notification" style="display: none;">
+					<h4>Có yêu cầu mới từ khách hàng, gọi tới khách hàng này ?</h4>
+					<div data-role="navbar" data-iconpos="left">
+						<ul>
+							<li><a data-icon='forward' href='#page-map' data-role='button' class='call-button' 
+								data-theme='b' data-rel='external'>Gọi</a></li>
+							<li><a data-icon='delete' href='#page-map' data-role='button' class='reject-button' 
+								data-theme='b' data-iconpos='right'>Hủy</a></li>
+						</ul>
+					</div><!-- /navbar -->
+				</div>
+				
+				<!-- <div style="background-color:blue;" id ="dangxuatmap" onmousedown="clickbutton('logoutmap','images/buttons/dangxuatbtn.png')" onmouseup="clickbutton('logoutmap','images/buttons/dangxuatbtn1.png')">
+					<a data-theme='b' data-rel="dialog"  href="logout.html" ><img id = "logoutmap" src="images/buttons/dangxuatbtn.png" style="width:95%;height:8%;align:center; margin-left: 5px" /> </a>
+				</div> -->
+				<div data-role="navbar" data-iconpos="left" data-icon="exit">
+					<ul>
+						<li><a href="#logout-page" data-theme='b' data-rel="dialog">Đăng xuất</a></li>
+					</ul>
+				</div>
+			</div><!-- /footer -->
+		</div><!-- /page-map -->
+		
+		
+		<!-- Jquery new ver-->
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+		<script>$.noConflict();</script>
+	</body>
+</html>

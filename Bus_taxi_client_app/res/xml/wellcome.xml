@@ -1,0 +1,19 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<LinearLayout android:id="@+id/LinearLayoutWellcome" 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<imageview android:id="@+id/icon" 
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content"
+		android:src = "@+drawable/icon.png">
+	</imageview>
+
+	<Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiếp theo" />
+</LinearLayout>  
+

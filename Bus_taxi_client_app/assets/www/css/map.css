@@ -1,0 +1,125 @@
+.ui-header .ui-title {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.ui-footer .ui-title {
+	margin-right: 20px;
+	margin-left: 20px;
+	white-space: normal;
+}
+
+.ui-btn-inner {
+	padding: .6em 7px;
+}
+
+/* .ui-body-e {
+	border: 1px solid #66eedd;
+	color: #222222;
+	text-shadow: 0 0px 0 #fff;
+	background: #c2e4d2;
+} */
+
+#page-map,#map-content,#infoMap-content,#map_canvas,#map_Icanvas,#info-map {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+#map_canvas{
+	min-height: 100%;
+}
+
+#map_square {
+	height: 120px;
+	width: 120px;
+	border: 2px solid #aaa;
+}
+
+.fading-msg {
+	padding: .6em;
+	text-shadow: none;
+	text-align: center;
+	margin: 120px auto;
+	font-weight: bold;
+	border: 0;
+	max-width: 260px;
+	min-width: 110px;
+}
+
+label {
+	color: green;
+	font-weight: bold !important;
+}
+
+input {
+	background-color: white; 
+	color : black;
+	height: 40px; 
+	background-position: initial initial; 
+	background-repeat: initial initial;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+.wrap {
+	/* margin: 10px; */
+	height: 100%;
+}
+
+.wrap-content {
+	padding-top: 5px;
+	position: relative;
+}
+
+.station {
+	background: #fff url(../images/van.png);
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+}
+
+h2 {
+	display: inline-block;
+	color: brown;
+	font-family: cursive;
+	font-weight: bold;
+	padding-left: 7px;
+}
+
+p {
+	font-family: cursive;
+	font-size: 1.2em;
+}
+
+.info-price-time {
+	position: absolute;
+	font-family: cursive;
+	color: darkorchid;
+	padding-right: 10px;
+	right: 0;
+}
+
+hr {
+	border: 1px solid gray;
+	margin-top: 26px;
+}
+
+.info_ct {
+	margin: 28px 11px;
+}
+
+.info_ct p {
+	font-size: 0.8em;
+	border-bottom: 1px dotted goldenrod;
+	padding-bottom: 5px;
+}
+
+@media (min-width: 360px) {
+	.wrap-content {
+		width: 360px;
+	}
+}
